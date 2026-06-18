@@ -1,31 +1,56 @@
 # Research Code Cleanup Demo
 
-A synthetic before/after demo for turning messy research code into a readable, reproducible workflow.
+A synthetic messy-to-clean research-code workflow showing how an unclear notebook/script can be converted into a reproducible, documented analysis.
 
-This repository uses dummy data only. It does not include private research data, private product data, or confidential implementation details from any private project.
+## Problem
+
+Research code often starts as a quick notebook or script built during exploration. That is normal, but it can become hard to debug, rerun, explain, or hand to another person when assumptions are hidden and analysis steps are mixed together.
+
+This repo shows a small synthetic example of that cleanup process.
+
+## Before/after workflow
+
+- `messy_version/`: a compact script with hard-coded assumptions and mixed I/O, analysis, and output.
+- `clean_version/`: a small, structured workflow with named functions, typed records, and a deterministic runner.
+- `docs/before_after.md`: a short explanation of what changed and why.
+
+## What gets improved
+
+- cleaner structure
+- clearer functions
+- synthetic data separated from code
+- better tables and command-line output
+- documentation for the workflow
+- reproducibility checks
+- tests for the cleaned analysis
 
 ## Repository structure
 
-- `messy_version/`: a deliberately compact, hard-to-maintain script.
-- `clean_version/`: a small reusable analysis package with a deterministic runner.
-- `data/`: synthetic measurements.
-- `docs/before_after.md`: what changed and why.
-- `docs/reproducibility_checklist.md`: checklist for research-code cleanup sprints.
-- `tests/`: standard-library tests for the cleaned workflow.
+- `data/`: synthetic CSV data only
+- `messy_version/`: intentionally rough starting point
+- `clean_version/`: cleaned analysis package and runner
+- `docs/`: before/after notes and reproducibility checklist
+- `tests/`: unit tests for the cleaned workflow
 
-## Run the messy version
+## Reproducibility checklist
+
+The demo checklist lives in `docs/reproducibility_checklist.md`. It covers data separation, named assumptions, deterministic commands, tests, generated outputs, and review for confidential material before public sharing.
+
+## How to run
+
+Run the messy version:
 
 ```bash
 python3 messy_version/messy_analysis.py
 ```
 
-## Run the clean version
+Run the clean version:
 
 ```bash
 PYTHONPATH=clean_version python3 clean_version/run_analysis.py
 ```
 
-## Validate
+Run tests:
 
 ```bash
 PYTHONPATH=clean_version python3 -m unittest discover -s tests
@@ -33,8 +58,6 @@ PYTHONPATH=clean_version python3 -m unittest discover -s tests
 
 ## What this demonstrates
 
-- Separating I/O from analysis logic
-- Replacing hidden assumptions with named functions
-- Adding deterministic synthetic data
-- Adding tests around the cleaned analysis
-- Writing documentation that makes the workflow reproducible
+This is public proof for research-code cleanup and debugging sprints: taking unclear exploratory code and turning it into a small, readable, documented, reproducible workflow.
+
+All data is synthetic. No private client data, private research data, or confidential project internals are included.
